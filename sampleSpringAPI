@@ -1,0 +1,34 @@
+package pl.ibmi.testService;
+
+
+import org.springframework.web.bind.annotation.*;
+import pl.ibmi.connector.IBMIConnector;
+import pl.ibmi.testService.process.models.TestServiceRequest;
+import pl.ibmi.testService.process.models.TestServiceResponse;
+
+@RestController
+@RequestMapping("/api")
+public class TestService {
+
+    @RequestMapping(value = "/testService", method = RequestMethod.POST)
+    @ResponseBody
+    public TestServiceResponse getTestService(@RequestBody TestServiceRequest request) {
+        IBMIConnector connection = new IBMIConnector("XXXX", "XXXX");
+        sendRequest(connection, request);
+        return getResponse(connection, request);
+    }
+
+    private TestServiceResponse getResponse(IBMIConnector connection, TestServiceRequest request) {
+        PaymentScheduleSimulationResponse response = new PaymentScheduleSimulationResponse();
+        response.getPCML(connection, "");
+        connection.AS400Disconnect();
+        return response;
+    }
+
+    private void sendRequest(IBMIConnector connection, TestServiceRequest request) {
+        connection.setZT002LibraryList();
+        request.setPCML(connection, "");
+        connection.callProgram();
+    }
+
+}
