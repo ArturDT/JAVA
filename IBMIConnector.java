@@ -261,7 +261,7 @@ public class IBMIConnector {
     /**
      * set library list in IBMI
      *
-     * @param libraryList library list as string (ex: "POZAT01DB POZAT01PB AIBINTMRS2")
+     * @param libraryList library list as string (ex: "TESTLIB TESTLIB01 TESTLIB3")
      * @return true if library list is setting
      */
     public boolean setMyOwnLibraryList(String libraryList) {
@@ -275,7 +275,7 @@ public class IBMIConnector {
      * @return true if library list setting successful
      */
     public boolean setDevLibraryList() {
-        String liblCommand = "CHGLIBL LIBL(DOBRZA03 POZAT01DB1 AIBINTMRS2 AIB71INTPD)";
+        String liblCommand = "CHGLIBL LIBL(TESTLIB TESTLIB01 TESTLIB3)";
         return executeCommand(liblCommand);
     }
 
@@ -285,7 +285,7 @@ public class IBMIConnector {
      * @return true if library list setting successful
      */
     public boolean setZT002LibraryList() {
-        String liblCommand = "CHGLIBL LIBL(IASLIBST04 POZST04SVR POZST04DB1 POZST04EFT POZST04PB AIBINTMRQ2 AIBINTMRO2 AIBINTMRO AIB71INTPD AIBV710DQ2 AIBV710D2 AIBV710D AIBV710PD POLV71 EUMDV710 ICBSV710 ICBSSMSMRP QGPL QTEMP)";
+        String liblCommand = "CHGLIBL LIBL(TESTLIB TESTLIB01 TESTLIB3 QTEMP)";
         return executeCommand(liblCommand);
     }
 
