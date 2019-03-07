@@ -1,4 +1,4 @@
-package pl.ibmi.testService;
+package pl.ibmi.TestService;
 
 
 import org.springframework.web.bind.annotation.*;
